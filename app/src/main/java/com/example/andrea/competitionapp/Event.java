@@ -11,13 +11,39 @@ public class Event {
     private Time time;
     private Location location;
     private String eventType;
-    private String registrationLink;
+    private String registration;
 
-    public Event(String name, Date date, Time time, Location location, String eventType, String registrationLink){
+    public Event(String name, Date date, Time time, Location location, String eventType, String registration){
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
+        this.eventType = eventType;
+        this.registration = registration;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public Date getDate(){
+        return date;
+    }
+
+    public Time getTime(){
+        return time;
+    }
+
+    public Location getLocation(){
+        return location;
+    }
+
+    public String getEventType(){
+        return eventType;
+    }
+
+    public String getRegistration(){
+        return registration;
     }
 
 }
