@@ -13,7 +13,7 @@ public class Event {
     private String eventType;
     private String registration;
 
-    public Event(String name, Date date, Time time, Location location, String eventType, String registration){
+    public Event(String name, Date date, Location location, String eventType, String registration){
         this.name = name;
         this.date = date;
         this.time = time;
@@ -28,10 +28,6 @@ public class Event {
 
     public Date getDate(){
         return date;
-    }
-
-    public Time getTime(){
-        return time;
     }
 
     public Location getLocation(){
