@@ -14,17 +14,7 @@ public class Location {
     private String delimiter;
     private String address;
 
-    public Location(String address){
-        delimiter = " ";
-    }
-
-    private String getStreetNum(){
-        for (int i = 0; i < address.length(); i++){
-            if (address.matches(delimiter)){
-                break;
-            }
-        }
-    }
+    
 
 
 }
