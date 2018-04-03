@@ -8,7 +8,6 @@ public class Event {
 
     private String name;
     private Date date;
-    private Time time;
     private Location location;
     private String eventType;
     private String registration;
@@ -16,7 +15,6 @@ public class Event {
     public Event(String name, Date date, Location location, String eventType, String registration){
         this.name = name;
         this.date = date;
-        this.time = time;
         this.location = location;
         this.eventType = eventType;
         this.registration = registration;
