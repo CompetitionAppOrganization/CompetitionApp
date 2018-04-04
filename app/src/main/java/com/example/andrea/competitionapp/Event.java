@@ -40,4 +40,23 @@ public class Event {
         return registration;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
 }
