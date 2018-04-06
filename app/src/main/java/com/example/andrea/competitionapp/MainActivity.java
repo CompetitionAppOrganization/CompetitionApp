@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         readLocationData();
 
         for (ReadFile locations : locations){
-            Log.d("MainActivity", "The event is " + locations.getEventTitle() + " and the state is is in is " + locations.getState());
+            Log.d("MainActivity", "The event is " + locations.getEventTitle() + ". It is located in " + locations.getCity() + ", " + locations.getState() + " at " + locations.getStreetNum() + " " + locations.getStreetName() + " " + locations.getZipCode() + ". It will take place on " + locations.getDay() + " " + locations.getMonth() + " " + locations.getYear());
         }
     }
 
