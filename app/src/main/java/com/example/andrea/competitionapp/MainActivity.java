@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int currentDate;
+    private int currentMonth;
+    private int currentYear;
     private ArrayList<ReadFile> locations;
 
     @Override
@@ -21,10 +23,54 @@ public class MainActivity extends AppCompatActivity {
 
         locations = new ArrayList<ReadFile> ();
         readLocationData();
+        currentDate = 6;
+        currentMonth = 4;
+        currentYear = 2018;
 
         for (ReadFile locations : locations){
             Log.d("MainActivity", "The event is " + locations.getEventTitle() + ". It is located in " + locations.getCity() + ", " + locations.getState() + " at " + locations.getStreetNum() + " " + locations.getStreetName() + " " + locations.getZipCode() + ". It will take place on " + locations.getDay() + " " + locations.getMonth() + " " + locations.getYear());
+            int day = Integer.parseInt(locations.getDay());
+            int month = Integer.parseInt(locations.getMonth());
+            int year = Integer.parseInt(locations.getYear());
+            String streetName = locations.getStreetName();
+            String city = locations.getCity();
+
+
+            //Possible changing interface for person in Worcester
+            //Assuming same year
+            if (city == "Worcester"){
+                System.out.println("The competition is in your city.");
+            }
+
+            else{
+                System.out.println("You will have to travel for this competition.");
+            }
+
+            if (month < currentMonth && year <= currentYear){
+                System.out.println("This competition has passed. Please choose another.");
+            }
+
+            if (month == currentMonth ){
+                int changeTime = day - currentDate;
+                if (changeTime < 0){
+                    System.out.println("This competition has passed.");
+                }
+
+                if (changeTime == 0){
+                    System.out.println("This competition is today. Check the competition website for information about walk-in registrations.");
+                }
+
+                if (changeTime > 0){
+                    System.out.println("This competition is in " + changeTime + " days.");
+                }
+            }
+
+            if (month > currentMonth){
+                
+            }
         }
+
+
     }
 
     public void readLocationData(){
