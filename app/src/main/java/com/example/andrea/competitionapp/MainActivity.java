@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private int currentMonth;
     private int currentYear;
     private String place;
+    private int month1;
+    private int month2;
+    int realDays;
     private ArrayList<ReadFile> locations;
 
     @Override
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         currentMonth = 4;
         currentYear = 2018;
         place = "Worcester";
+        month1 = 4;
+        month2 = 6;
 
 
         for (ReadFile locations : locations){
@@ -75,7 +80,16 @@ public class MainActivity extends AppCompatActivity {
                 Months monthCalc = new Months();
                 int between = monthCalc.monthsBetween(4,6);
 
-                
+                int daysMonthA = monthCalc.numDays(month1);
+                int daysMonthB = daysMonthA-day;
+
+                for (int j = month1+1; j < between; j++){
+                    int monthC = monthCalc.numDays(j);
+                    realDays = daysMonthB + monthC;
+                }
+
+                System.out.println("Your competition is " + realDays + "days away.");
+
             }
         }
 
