@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private int currentDate;
     private int currentMonth;
     private int currentYear;
+    private String place;
     private ArrayList<ReadFile> locations;
 
     @Override
@@ -23,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
         locations = new ArrayList<ReadFile> ();
         readLocationData();
+
+        //These values are hardcoded for testing purposes. They will not be hardcoded in the final app.
         currentDate = 6;
         currentMonth = 4;
         currentYear = 2018;
+        place = "Worcester";
+
 
         for (ReadFile locations : locations){
             Log.d("MainActivity", "The event is " + locations.getEventTitle() + ". It is located in " + locations.getCity() + ", " + locations.getState() + " at " + locations.getStreetNum() + " " + locations.getStreetName() + " " + locations.getZipCode() + ". It will take place on " + locations.getDay() + " " + locations.getMonth() + " " + locations.getYear());
@@ -35,14 +40,16 @@ public class MainActivity extends AppCompatActivity {
             String streetName = locations.getStreetName();
             String city = locations.getCity();
 
+            int changeTime = day - currentDate;
+
 
             //Possible changing interface for person in Worcester
             //Assuming same year
-            if (city == "Worcester"){
+            if (city == place){
                 System.out.println("The competition is in your city.");
             }
 
-            else{
+            else if (city != place){
                 System.out.println("You will have to travel for this competition.");
             }
 
@@ -51,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (month == currentMonth ){
-                int changeTime = day - currentDate;
                 if (changeTime < 0){
                     System.out.println("This competition has passed.");
                 }
@@ -66,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (month > currentMonth){
+                Months monthCalc = new Months();
+                int between = monthCalc.monthsBetween(4,6);
+
                 
             }
         }
