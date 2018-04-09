@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (month > currentMonth){
                 Months monthCalc = new Months();
-                int between = monthCalc.monthsBetween(4,6);
+                int between = monthCalc.monthsBetween(month1,month2);
 
                 int daysMonthA = monthCalc.numDays(month1);
                 int daysMonthB = daysMonthA-day;
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 //Split line by ","
                 String[] fields = line.split(",");
 
-                ReadFile s = new ReadFile(fields[0], fields[1], fields [2], fields[3], fields[4], fields[5], fields[6], fields[8], fields[9], fields[10]);
+                ReadFile s = new ReadFile(fields[0], fields[1], fields [2], fields[3], fields[4], fields[5], fields[6], fields[7], fields[8], fields[9]);
                 locations.add(s);
 
             }
