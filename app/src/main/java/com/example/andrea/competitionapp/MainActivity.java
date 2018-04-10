@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     int realDays;
     private ArrayList<ReadFile> locations;
 
-    @Override
+    //@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -117,4 +117,5 @@ public class MainActivity extends AppCompatActivity {
             Log.e("MainActivity", "Error reading data from file on line " + line);
         }
     }
+
 }
