@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Possible changing interface for person in Worcester
             //Assuming same year
+            //The printed strings are just to test the logic, will be used to order the listview
             if (city == place){
                 System.out.println("The competition is in your city.");
             }
