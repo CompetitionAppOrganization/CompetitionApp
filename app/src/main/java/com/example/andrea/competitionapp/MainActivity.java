@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private int month2;
     int realDays;
     private ArrayList<ReadFile> locations;
+    public ArrayList<Event> events;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
             int year = Integer.parseInt(locations.getYear());
             String streetName = locations.getStreetName();
             String city = locations.getCity();
+
+
+
+
+
+
+
+
+
+
+
 
             int changeTime = day - currentDate;
 
