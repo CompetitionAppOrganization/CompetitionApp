@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     int realDays;
     private ArrayList<ReadFile> locations;
 
-    //@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -51,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
             //Possible changing interface for person in Worcester
             //Assuming same year
             //The printed strings are just to test the logic, will be used to order the listview
-            if (city == place){
-                System.out.println("The competition is in your city.");
+
+            if (year < currentYear){
+                System.out.println("This competition has passed.");
             }
 
-            else if (city != place){
-                System.out.println("You will have to travel for this competition.");
+            if (year > currentYear);
+            {
+                day = day + 365;
             }
 
             if (month < currentMonth && year <= currentYear){
