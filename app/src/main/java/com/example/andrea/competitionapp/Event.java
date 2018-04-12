@@ -7,17 +7,33 @@ package com.example.andrea.competitionapp;
 public class Event {
 
     private String name;
+
     private String zipCode;
     private String street;
     private String state;
     private String city;
     private String eventType;
     private String registration;
+
     private String month;
     private String numberDate;
     private String year;
     private String startTime;
     private String endTime;
+
+    public Event(String name, String month, String numberDate, String year, String street, String city, String state, String zipCode) {
+        this.name = name;
+        this.zipCode = zipCode;
+        this.street = street;
+        this.state = state;
+        this.city = city;
+        this.month = month;
+        this.numberDate = numberDate;
+        this.year = year;
+    }
+    public Event(){
+
+    }
 
     public String getName() {
         return name;
