@@ -7,7 +7,7 @@ package com.example.andrea.competitionapp;
 public class Event {
 
     private String name;
-
+//blah
     private String zipCode;
     private String street;
     private String state;
