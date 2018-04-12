@@ -23,9 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Creates a new list view
         final ListView lv = (ListView) findViewById(R.id.lv);
 
+        //creates arrays of event information for each list view
         final List<String> eventNames = new ArrayList<String>();
+
 
         // Create an ArrayAdapter from List
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
@@ -42,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         for (Event event : events) {
             Log.d("MainActivity", "The event is " + event.getName());
-            eventNames.add(event.getName());
+            eventNames.add(event.getName()+"\t"+event.getMonth()+" "+event.getNumberDate()+", "+event.getYear());
+
         }
 
 
