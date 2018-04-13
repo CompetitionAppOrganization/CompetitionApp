@@ -8,7 +8,7 @@ public class ReadFile {
     private String eventTitle;
     private String state;
     private String day;
-    private String month;
+    private String month; 
     private String year;
     private String building;
     private String streetNum;
