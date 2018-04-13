@@ -1,0 +1,326 @@
+Main Activity:
+package com.example.andrea.competitionapp;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    private int currentDate;
+    private int currentMonth;
+    private int currentYear;
+    private String place;
+    private int month1;
+    private int month2;
+    int realDays;
+    private ArrayList<ReadFile> locations;
+    //public ArrayList<Event> events;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        locations = new ArrayList<ReadFile> ();
+        readLocationData();
+
+        //These values are hardcoded for testing purposes. They will not be hardcoded in the final app.
+        currentDate = 6;
+        currentMonth = 4;
+        currentYear = 2018;
+        place = "Worcester";
+        month1 = 4;
+        month2 = 6;
+
+
+        for (ReadFile locations : locations){
+            Log.d("MainActivity", "The event is " + locations.getEventTitle() + ". It is located in " + locations.getCity() + ", " + locations.getState() + " at " + locations.getStreetNum() + " " + locations.getStreetName() + " " + locations.getZipCode() + ". It will take place on " + locations.getDay() + " " + locations.getMonth() + " " + locations.getYear());
+            int day = Integer.parseInt(locations.getDay());
+            int month = Integer.parseInt(locations.getMonth());
+            int year = Integer.parseInt(locations.getYear());
+            String streetName = locations.getStreetName();
+            String city = locations.getCity();
+
+            int changeTime = day - currentDate;
+
+
+            //Possible changing interface for person in Worcester
+            //Assuming same year
+            //The printed strings are just to test the logic, will be used to order the listview
+
+            if (year < currentYear){
+                System.out.println("This competition has passed.");
+            }
+
+            if (year > currentYear);
+            {
+                day = day + 365;
+            }
+
+            if (month < currentMonth && year <= currentYear){
+                System.out.println("This competition has passed. Please choose another.");
+            }
+
+            if (month == currentMonth ){
+                if (changeTime < 0){
+                    System.out.println("This competition has passed.");
+                }
+
+                if (changeTime == 0){
+                    System.out.println("This competition is today. Check the competition website for information about walk-in registrations.");
+                }
+
+                if (changeTime > 0){
+                    System.out.println("This competition is in " + changeTime + " days.");
+                }
+            }
+
+            if (month > currentMonth){
+                Months monthCalc = new Months();
+                int between = monthCalc.monthsBetween(month1,month2);
+
+                int daysMonthA = monthCalc.numDays(month1);
+                int daysMonthB = daysMonthA-day;
+
+                for (int j = month1+1; j < between; j++){
+                    int monthC = monthCalc.numDays(j);
+                    realDays = daysMonthB + monthC;
+                }
+
+                System.out.println("Your competition is " + realDays + "days away.");
+
+            }
+        }
+
+
+    }
+
+    public void readLocationData(){
+        //Read the data from the file
+
+        InputStream is = getResources().openRawResource(R.raw.locations);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+        String line = "";
+        try {
+            while ((line = reader.readLine()) != null){
+                //Split line by ","
+                String[] fields = line.split(",");
+
+                ReadFile s = new ReadFile(fields[0], fields[1], fields [2], fields[3], fields[4], fields[5], fields[6], fields[7], fields[8], fields[9]);
+                locations.add(s);
+
+            }
+        } catch (IOException e) {
+            Log.e("MainActivity", "Error reading data from file on line " + line);
+        }
+    }
+
+}
+
+Months class:
+
+package com.example.andrea.competitionapp;
+
+/**
+ * Created by havak on 4/6/18.
+ */
+
+public class Months {
+
+    int monthsBetween;
+    int yearsBetween;
+
+    public int numDays (int month){
+        if (month == 1){
+            return 31;
+        }
+
+        if (month == 2){
+            return 28;
+        }
+
+        if (month == 3){
+            return 31;
+        }
+
+        if (month == 4){
+            return 30;
+        }
+
+        if (month == 5){
+            return 31;
+        }
+
+        if (month == 6){
+            return 30;
+        }
+
+        if (month == 7){
+            return 31;
+        }
+
+        if (month == 8){
+            return 31;
+        }
+
+        if (month == 9){
+            return 30;
+        }
+
+        if (month == 10){
+            return 31;
+        }
+
+        if (month == 11){
+            return 30;
+        }
+
+        if (month == 12){
+            return 31;
+        }
+
+        return month;
+    }
+
+    public int monthsBetween (int month1, int month2){
+        monthsBetween = month2 - month1;
+        return monthsBetween;
+    }
+
+    public int yearsBetween (int year1, int year2){
+        yearsBetween = year2 - year1;
+        return yearsBetween;
+    }
+}
+
+
+ReadFile Class
+
+package com.example.andrea.competitionapp;
+
+/**
+ * Created by havak on 4/4/18.
+ */
+
+public class ReadFile {
+    private String eventTitle;
+    private String state;
+    private String day;
+    private String month;
+    private String year;
+    private String building;
+    private String streetNum;
+    private String streetName;
+    private String city;
+    private String zipCode;
+
+    public ReadFile (String eventTitle, String day, String month, String year, String building, String streetNum, String streetName, String city, String state, String zipCode){
+        this.building = building;
+        this.city = city;
+        this.eventTitle = eventTitle;
+        this.state = state;
+        this.streetNum = streetNum;
+        this.streetName = streetName;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.zipCode = zipCode;
+    }
+
+    public String getEventTitle(){
+        return eventTitle;
+    }
+
+    public String getState(){
+        return state;
+    }
+
+    public String getDay(){
+        return day;
+    }
+
+    public String getMonth(){
+
+        if (month == "January"){
+            return "1";
+        }
+        else if (month == "February"){
+            return "2";
+        }
+
+        else if (month == "March"){
+            return "3";
+        }
+
+        else if (month == "April"){
+            return "4";
+        }
+
+        else if (month == "May"){
+            return "5";
+        }
+
+        else if (month == "June"){
+            return "6";
+        }
+
+        else if (month == "July"){
+            return "7";
+        }
+
+        else if (month == "August"){
+            return "8";
+        }
+
+        else if (month == "September") {
+            return "9";
+        }
+
+        else if (month == "October"){
+            return "10";
+        }
+
+        else if (month == "November"){
+            return "11";
+        }
+
+        else if (month == "December"){
+            return "12";
+        }
+
+        else{
+            return month;
+        }
+    }
+
+    public String getYear () {
+        return year;
+    }
+
+    public String getBuilding(){
+        return building;
+    }
+
+    public String getStreetNum () {
+        return streetNum;
+    }
+
+    public String getStreetName(){
+        return streetName;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public String getZipCode (){
+        return zipCode;
+    }
+}
