@@ -2,10 +2,13 @@ package com.example.andrea.competitionapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -17,7 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public ArrayList<Event> events;
-
+    ArrayAdapter<String> adapter;
     //@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +32,15 @@ public class MainActivity extends AppCompatActivity {
         //creates arrays of event information for each list view
         final List<String> eventNames = new ArrayList<String>();
 
+        EditText inputSearch;
+        inputSearch = (EditText) findViewById(R.id.inputSearch);
 
-        // Create an ArrayAdapter from List
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+
+        // Adds eventNames to ListView
+        adapter=new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, eventNames);
 
-        lv.setAdapter(arrayAdapter);
+        lv.setAdapter(adapter);
 
 
         events=new ArrayList<Event>();
@@ -48,7 +54,26 @@ public class MainActivity extends AppCompatActivity {
             eventNames.add(event.getName()+"\t"+event.getMonth()+" "+event.getNumberDate()+", "+event.getYear());
 
         }
+        inputSearch.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+               MainActivity.this.adapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
 
 
 

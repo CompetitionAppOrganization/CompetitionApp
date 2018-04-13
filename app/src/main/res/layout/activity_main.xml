@@ -25,7 +25,11 @@
             android:scaleType="centerInside"
             android:src="@drawable/logo"
             tools:layout_editor_absoluteY="4dp" />
-
+        <EditText android:id="@+id/inputSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search events..."
+            android:inputType="textVisiblePassword"/>
         <ListView
             android:id="@+id/lv"
             android:layout_width="600dp"
