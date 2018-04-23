@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //Creates a new list view
+    }
+        /*//Creates a new list view
         final ListView lv = (ListView) findViewById(R.id.lv);
 
         //creates arrays of event information for each list view
@@ -97,5 +97,5 @@ public class MainActivity extends AppCompatActivity {
             Log.e("MainActivity", "Error reading data from file on line " + line);
         }
     }
-
+*/
 }
