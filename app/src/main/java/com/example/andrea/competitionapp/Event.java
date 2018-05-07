@@ -14,6 +14,7 @@ public class Event {
     private String city;
     private String eventType;
     private String registration;
+    private String link;
 
     private String month;
     private String numberDate;
@@ -21,7 +22,7 @@ public class Event {
     private String startTime;
     private String endTime;
 
-    public Event(String name, String month, String numberDate, String year, String street, String city, String state, String zipCode) {
+    public Event(String name, String month, String numberDate, String year, String street, String city, String state, String zipCode, String link) {
         this.name = name;
         this.zipCode = zipCode;
         this.street = street;
@@ -30,11 +31,14 @@ public class Event {
         this.month = month;
         this.numberDate = numberDate;
         this.year = year;
+        this.link=link;
     }
     public Event(){
 
     }
-
+    public String getLink(){
+        return link;
+    }
     public String getName() {
         return name;
     }
