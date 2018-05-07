@@ -1,4 +1,4 @@
-The North Face Endurance Challenge,June,9,2018,499 Mountain Road,Princeton,MA,01541
-Funky Monkey half marathon/ 5k/10k,June,24,2018,472 Taunton Ave,Seekonk,MA,02771
-2018 Star Wars Half Marathon - The Dark Side,April,19,2018,10000 Lake Buena Vista,Orlando,FL,32830
-Flying Pirate Half Marathon,April,14,2018,5300 The Woods Road,Kitty Hawk,NC,27949
+The North Face Endurance Challenge,June,9,2018,499 Mountain Road,Princeton,MA,01541,https://www.active.com/princeton-ma/running/distance-running/the-north-face-endurance-challenge-massachusetts-2018?int=
+Funky Monkey half marathon/ 5k/10k,June,24,2018,472 Taunton Ave,Seekonk,MA,02771,https://www.active.com/seekonk-ma/running/distance-running-races/funky-monkey-half-marathon-5k-10k-2018?int=
+Long Beach CA Galloway Training Program,September,23,2017,2800 Studebaker Ave,Long Beach,CA,90808,https://www.active.com/long-beach-ca/running/distance-running-programs/long-beach-ca-galloway-training-program-sep-23-may-5-2018-2017?int=
+Flying Pirate Half Marathon,April,14,2018,5300 The Woods Road,Kitty Hawk,NC,27949,https://www.active.com/kitty-hawk-nc/running/distance-running-races/flying-pirate-half-marathon-2019?int=

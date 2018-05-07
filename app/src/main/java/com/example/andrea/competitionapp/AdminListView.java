@@ -1,7 +1,6 @@
 package com.example.andrea.competitionapp;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,22 +18,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity {
-    public static Event selectedEvent;
+public class AdminListView extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseDatabase database;
     ArrayList<Event> events=new ArrayList<Event>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin_list_view);
         database = FirebaseDatabase.getInstance();
 
         // Read from the database
@@ -71,14 +65,29 @@ public class ListActivity extends AppCompatActivity {
                     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedEvent=events.get(i);
+                            ListActivity.selectedEvent=events.get(i);
                             Intent intent= new Intent(view.getContext(),CompetitionInformation.class);
                             startActivity(intent);
                         }
                     });
 
-
                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
@@ -89,4 +98,3 @@ public class ListActivity extends AppCompatActivity {
     }
 
 }
-

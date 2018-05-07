@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1040243021025",
+    "firebase_url": "https://competitionapp-91dbc.firebaseio.com",
+    "project_id": "competitionapp-91dbc",
+    "storage_bucket": "competitionapp-91dbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040243021025:android:3b18a6c720fa93b5",
+        "android_client_info": {
+          "package_name": "com.example.andrea.competitionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040243021025-10iuu5bjt8r5qopbtd8q429flp1avgei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andrea.competitionapp",
+            "certificate_hash": "67a34c2d8da8a51b1a479309198169c4d3feab91"
+          }
+        },
+        {
+          "client_id": "1040243021025-u4upovk88tveou265csqoe5ruao8nkvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPKRFwVMT1Kgz6z-gMHMIMYN_RwiFpvP0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040243021025-u4upovk88tveou265csqoe5ruao8nkvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

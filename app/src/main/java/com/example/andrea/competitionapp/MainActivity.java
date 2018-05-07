@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
 
-        final Button button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button buttonList = findViewById(R.id.button3);
+        buttonList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 Intent intent=new Intent(v.getContext(),ListActivity.class);
@@ -43,7 +43,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Creates a new list view
+        final Button buttonAdmin = findViewById(R.id.adminButton);
+        buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent intent=new Intent(v.getContext(),AdminListView.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
