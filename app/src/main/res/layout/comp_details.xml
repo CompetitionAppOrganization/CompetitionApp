@@ -37,9 +37,10 @@
 
         <TextView
             android:id="@+id/eventInfo"
-            android:layout_width="335dp"
+            android:layout_width="565dp"
             android:layout_height="159dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
 
 
