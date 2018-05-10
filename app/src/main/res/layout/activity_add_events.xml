@@ -39,31 +39,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <EditText
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address" />
 
-        <TextView
+        <EditText
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="City" />
 
-        <TextView
+        <EditText
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="State" />
 
-        <TextView
+        <EditText
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Zip Code" />
 
-        <TextView
+        <EditText
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
