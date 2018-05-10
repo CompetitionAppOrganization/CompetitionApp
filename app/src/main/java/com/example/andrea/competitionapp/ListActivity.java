@@ -38,44 +38,50 @@ public class ListActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         // Read from the database
-        for(int i=1;i<5;i++) {
-            myRef=database.getReference("Event"+i);
+            myRef=database.getReference();
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    Event event=( dataSnapshot.getValue(Event.class));
-                    Log.d("names",event.getName());
-                    Log.d("Months",event.getMonth());
-                    events.add(event);
-                    final ListView lv = (ListView) findViewById(R.id.lv);
-
-                    //creates arrays of event information for each list view
-                    final List<String> eventNames = new ArrayList<String>();
-
-
-                    EditText inputSearch;
-                    inputSearch = (EditText) findViewById(R.id.inputSearch);
-
-
-                    // Adds eventNames to ListView
-                    ArrayAdapter adapter=new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
-
-                    lv.setAdapter(adapter);
-
-                    //adds event info to eventnames arraylist
-                    for(Event e: events){
-                        eventNames.add(e.getName()+" "+e.getMonth()+" "+e.getNumberDate()+ " "+ e.getYear());
-                    }
-                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedEvent=events.get(i);
-                            Intent intent= new Intent(view.getContext(),CompetitionInformation.class);
-                            startActivity(intent);
+                    Event event;
+                    for(DataSnapshot snap: dataSnapshot.getChildren()) {
+                        event = (snap.getValue(Event.class));
+                        if (event == null){
+                            Log.d("hava","event object is null");
                         }
-                    });
+                        Log.d("names", event.getName());
+                        Log.d("Months", event.getMonth());
+                        events.add(event);
+                        final ListView lv = (ListView) findViewById(R.id.lv);
+
+                        //creates arrays of event information for each list view
+                        final List<String> eventNames = new ArrayList<String>();
+
+
+                        EditText inputSearch;
+                        inputSearch = (EditText) findViewById(R.id.inputSearch);
+
+
+                        // Adds eventNames to ListView
+                        ArrayAdapter adapter = new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
+
+                        lv.setAdapter(adapter);
+
+                        //adds event info to eventnames arraylist
+                        for (Event e : events) {
+                            eventNames.add(e.getName() + " " + e.getMonth() + " " + e.getNumberDate() + " " + e.getYear());
+                        }
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                selectedEvent = events.get(i);
+                                Intent intent = new Intent(view.getContext(), CompetitionInformation.class);
+                                startActivity(intent);
+                            }
+                        });
+
+                    }
 
 
                 }
@@ -88,5 +94,5 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
-}
+
 
