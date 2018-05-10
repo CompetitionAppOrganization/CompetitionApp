@@ -1,9 +1,12 @@
 package com.example.andrea.competitionapp;
 
+import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminCompInfo extends AppCompatActivity {
-    List<Event> events=new ArrayList<Event>();
+    final List<Event> events=new ArrayList<Event>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,15 @@ public class AdminCompInfo extends AppCompatActivity {
                     textView= (TextView) findViewById(R.id.eventInfo);
                     textView.setText("Date: "+AdminListView.selectedEvent.getMonth()+" "+AdminListView.selectedEvent.getNumberDate()+", "+AdminListView.selectedEvent.getYear()
                             +"\nLocation: "+AdminListView.selectedEvent.getStreet()+", "+AdminListView.selectedEvent.getCity());
+                    final Button buttonList = findViewById(R.id.deleteEvent);
+                    buttonList.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            // Code here executes on main thread after user presses button
 
+                        }
+                    });
                 }
+
 
                 @Override
                 public void onCancelled(DatabaseError error) {
