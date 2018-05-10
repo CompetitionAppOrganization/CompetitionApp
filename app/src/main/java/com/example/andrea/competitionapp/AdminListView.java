@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -30,6 +31,14 @@ public class AdminListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_list_view);
+        final Button buttonList = findViewById(R.id.button4);
+        buttonList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent intent=new Intent(v.getContext(),AddEventsActivity.class);
+                startActivity(intent);
+            }
+        });
         database = FirebaseDatabase.getInstance();
 
         myRef=database.getReference();
@@ -70,7 +79,7 @@ public class AdminListView extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             selectedEvent = events.get(i);
-                            Intent intent = new Intent(view.getContext(), CompetitionInformation.class);
+                            Intent intent = new Intent(view.getContext(), AdminCompInfo.class);
                             startActivity(intent);
                         }
                     });

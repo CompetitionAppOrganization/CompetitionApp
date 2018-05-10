@@ -30,58 +30,48 @@ public class ListActivity extends AppCompatActivity {
     public static Event selectedEvent;
     DatabaseReference myRef;
     FirebaseDatabase database;
-    ArrayList<Event> events=new ArrayList<Event>();
+    List<Event> events=new ArrayList<Event>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         database = FirebaseDatabase.getInstance();
-
         // Read from the database
             myRef=database.getReference();
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    Event event;
-                    for(DataSnapshot snap: dataSnapshot.getChildren()) {
-                        event = (snap.getValue(Event.class));
-                        if (event == null){
-                            Log.d("hava","event object is null");
-                        }
-                        Log.d("names", event.getName());
-                        Log.d("Months", event.getMonth());
+                    for(DataSnapshot eventsData: dataSnapshot.getChildren()) {
+                        Event event= (Event) eventsData.getValue(Event.class);
                         events.add(event);
-                        final ListView lv = (ListView) findViewById(R.id.lv);
-
-                        //creates arrays of event information for each list view
-                        final List<String> eventNames = new ArrayList<String>();
-
-
-                        EditText inputSearch;
-                        inputSearch = (EditText) findViewById(R.id.inputSearch);
-
-
-                        // Adds eventNames to ListView
-                        ArrayAdapter adapter = new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
-
-                        lv.setAdapter(adapter);
-
-                        //adds event info to eventnames arraylist
-                        for (Event e : events) {
-                            eventNames.add(e.getName() + " " + e.getMonth() + " " + e.getNumberDate() + " " + e.getYear());
-                        }
-                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                selectedEvent = events.get(i);
-                                Intent intent = new Intent(view.getContext(), CompetitionInformation.class);
-                                startActivity(intent);
-                            }
-                        });
-
                     }
+                    final ListView lv = (ListView) findViewById(R.id.lv);
+
+                    //creates arrays of event information for each list view
+                    final List<String> eventNames = new ArrayList<String>();
+
+
+                    EditText inputSearch;
+                    inputSearch = (EditText) findViewById(R.id.inputSearch);
+
+
+                    // Adds eventNames to ListView
+                    ArrayAdapter adapter=new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
+
+                    lv.setAdapter(adapter);
+
+                    //adds event info to eventnames arraylist
+                    for(Event e: events){
+                        eventNames.add(e.getName()+" "+e.getMonth()+" "+e.getNumberDate()+ " "+ e.getYear());
+                    }
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            selectedEvent=events.get(i);
+                            Intent intent= new Intent(view.getContext(),CompetitionInformation.class);
+                            startActivity(intent);
+                        }
+                    });
 
 
                 }
@@ -92,7 +82,7 @@ public class ListActivity extends AppCompatActivity {
                 }
             });
         }
-    }
 
 
+}
 
