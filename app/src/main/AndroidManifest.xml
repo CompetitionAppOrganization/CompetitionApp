@@ -19,7 +19,8 @@
         <activity android:name=".ListActivity" />
         <activity android:name=".AddEventsActivity" />
         <activity android:name=".CompetitionInformation" />
-        <activity android:name=".AdminListView"></activity>
+        <activity android:name=".AdminListView" />
+        <activity android:name=".AdminCompInfo"></activity>
     </application>
 
 </manifest>
