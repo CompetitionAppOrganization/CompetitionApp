@@ -52,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final Button buttonCalendar = findViewById(R.id.button2);
+        buttonCalendar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                String calendarUrl = "https://calendar.google.com/calendar/gp?h1=en";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(calendarUrl));
+                startActivity(i);
+            }
+        });
+
     }
 
 }
