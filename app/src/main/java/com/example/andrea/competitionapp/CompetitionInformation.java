@@ -1,7 +1,11 @@
 package com.example.andrea.competitionapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CompetitionInformation extends AppCompatActivity {
@@ -15,5 +19,15 @@ public class CompetitionInformation extends AppCompatActivity {
         textView= (TextView) findViewById(R.id.eventInfo);
         textView.setText("Date: "+ListActivity.selectedEvent.getMonth()+" "+ListActivity.selectedEvent.getNumberDate()+", "+ListActivity.selectedEvent.getYear()
                             +"\nLocation: "+ListActivity.selectedEvent.getStreet()+", "+ListActivity.selectedEvent.getCity());
+
+
+        final Button buttonList = findViewById(R.id.button4);
+        buttonList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://calendar.google.com"));
+                startActivity(viewIntent);
+            }
+        });
     }
 }
