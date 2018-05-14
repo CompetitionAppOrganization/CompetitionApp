@@ -21,24 +21,25 @@ import java.util.List;
 public class AdminCompInfo extends AppCompatActivity {
     final List<Event> events=new ArrayList<Event>();
     DatabaseReference selectedEventReference;
+    String keyFinal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_comp_info);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
-
         myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot eventsData: dataSnapshot.getChildren()) {
 
+                    for(DataSnapshot eventsData: dataSnapshot.getChildren()) {
                         Event event= (Event) eventsData.getValue(Event.class);
                         Log.d("AdminCompInfo",event.getName());
-                        if(event.getName().equals(AdminListView.selectedEvent)){
-                            selectedEventReference=eventsData.getRef();
+                        if(event.getName().equals(AdminListView.selectedEvent.getName())){
+                            keyFinal=eventsData.getKey();
                         }
                     }
+
                     TextView textView = (TextView) findViewById(R.id.Name);
                     textView.setText(AdminListView.selectedEvent.getName()); //set text for text view
                     textView= (TextView) findViewById(R.id.eventInfo);
@@ -47,7 +48,8 @@ public class AdminCompInfo extends AppCompatActivity {
                     final Button buttonList = findViewById(R.id.deleteEvent);
                     buttonList.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View v) {
-                            // Code here executes on main thread after user presses button
+                            Log.d("ahhh",keyFinal);
+                            FirebaseDatabase.getInstance().getReference().child(keyFinal).removeValue();      // Code here executes on main thread after user presses button
 
                         }
                     });
