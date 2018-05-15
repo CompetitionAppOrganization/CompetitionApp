@@ -1,5 +1,6 @@
 package com.example.andrea.competitionapp;
 
+import android.app.Application;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +52,9 @@ public class AdminCompInfo extends AppCompatActivity {
                         public void onClick(View v) {
                             Log.d("ahhh",keyFinal);
                             FirebaseDatabase.getInstance().getReference().child(keyFinal).removeValue();      // Code here executes on main thread after user presses button
+                            Intent intent=new Intent(v.getContext(),AdminListView.class);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(),"Event Successfully Deleted!",Toast.LENGTH_SHORT).show();
 
                         }
                     });

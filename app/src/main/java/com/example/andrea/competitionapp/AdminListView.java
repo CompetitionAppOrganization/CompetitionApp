@@ -48,6 +48,7 @@ public class AdminListView extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 Event event;
+                events.clear();
                 for(DataSnapshot snap: dataSnapshot.getChildren()) {
                     event = (snap.getValue(Event.class));
                     if (event == null){
@@ -70,7 +71,7 @@ public class AdminListView extends AppCompatActivity {
                     ArrayAdapter adapter = new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
 
                     lv.setAdapter(adapter);
-
+                    eventNames.clear();
                     //adds event info to eventnames arraylist
                     for (Event e : events) {
                         eventNames.add(e.getName() + " " + e.getMonth() + " " + e.getNumberDate() + " " + e.getYear());

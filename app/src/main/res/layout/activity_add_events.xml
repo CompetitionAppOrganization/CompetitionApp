@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Name" />
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -43,31 +43,31 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Address" />
+            android:hint="Address" />
 
         <EditText
             android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="City" />
+            android:hint="City" />
 
         <EditText
             android:id="@+id/state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="State" />
+            android:hint="State" />
 
         <EditText
             android:id="@+id/zip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zip Code" />
+            android:hint="Zip Code" />
 
         <EditText
             android:id="@+id/link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Link" />
+            android:hint="Link"/>
 
         <Button
             android:id="@+id/submit"

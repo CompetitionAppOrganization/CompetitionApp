@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -61,6 +62,9 @@ public class AddEventsActivity extends AppCompatActivity {
                         DatabaseReference myRef=database.getReference();
                         DatabaseReference newRef= myRef.push();
                         newRef.setValue(event);
+                        Intent intent=new Intent(v.getContext(),AdminListView.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(),"Event Successfully Added!",Toast.LENGTH_SHORT).show();
 
                     }
                 });
