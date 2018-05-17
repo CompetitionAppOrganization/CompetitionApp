@@ -20,7 +20,15 @@ public class CompetitionInformation extends AppCompatActivity {
         textView.setText("Date: "+ListActivity.selectedEvent.getMonth()+" "+ListActivity.selectedEvent.getNumberDate()+", "+ListActivity.selectedEvent.getYear()
                             +"\nLocation: "+ListActivity.selectedEvent.getStreet()+", "+ListActivity.selectedEvent.getCity());
 
-
+        final Button buttonLink = findViewById(R.id.link);
+        buttonLink.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(ListActivity.selectedEvent.getLink()));
+                startActivity(i);
+            }
+        });
         final Button buttonList = findViewById(R.id.button4);
         buttonList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

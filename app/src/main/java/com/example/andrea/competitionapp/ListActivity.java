@@ -31,6 +31,7 @@ public class ListActivity extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseDatabase database;
     List<Event> events=new ArrayList<Event>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +50,32 @@ public class ListActivity extends AppCompatActivity {
 
                     //creates arrays of event information for each list view
                     final List<String> eventNames = new ArrayList<String>();
-
+                    eventNames.clear();
 
                     EditText inputSearch;
                     inputSearch = (EditText) findViewById(R.id.inputSearch);
 
 
                     // Adds eventNames to ListView
-                    ArrayAdapter adapter=new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
+                    final ArrayAdapter adapter=new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
+                    inputSearch = (EditText) findViewById(R.id.inputSearch);
 
+                    inputSearch.addTextChangedListener(new TextWatcher() {
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                            // Call back the Adapter with current character to Filter
+                            adapter.getFilter().filter(s.toString());
+                        }
+
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                        }
+                    });
                     lv.setAdapter(adapter);
 
                     //adds event info to eventnames arraylist
