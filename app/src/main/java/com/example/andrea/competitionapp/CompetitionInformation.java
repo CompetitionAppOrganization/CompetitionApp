@@ -18,7 +18,7 @@ public class CompetitionInformation extends AppCompatActivity {
         textView.setText(ListActivity.selectedEvent.getName()); //set text for text view
         textView= (TextView) findViewById(R.id.eventInfo);
         textView.setText("Date: "+ListActivity.selectedEvent.getMonth()+" "+ListActivity.selectedEvent.getNumberDate()+", "+ListActivity.selectedEvent.getYear()
-                            +"\nLocation: "+ListActivity.selectedEvent.getStreet()+", "+ListActivity.selectedEvent.getCity());
+                            +"\nLocation: "+ListActivity.selectedEvent.getStreet()+"\n"+ListActivity.selectedEvent.getCity()+", "+ListActivity.selectedEvent.getState()+" "+ListActivity.selectedEvent.getZipCode());
 
 
         final Button buttonList = findViewById(R.id.button4);
