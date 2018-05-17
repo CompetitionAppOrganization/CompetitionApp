@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CompetitionApp</string>
     <string name="title_activity_list">ActivityList</string>
+    <string name="server_client_id">155645017996-0vu75fbcj8s73qdtknc194ds4h300smk.apps.googleusercontent.com</string>
 </resources>
