@@ -59,13 +59,16 @@ public class ListActivity extends AppCompatActivity {
                     // Adds eventNames to ListView
                     final ArrayAdapter adapter=new ArrayAdapter<String>(lv.getContext(), android.R.layout.simple_list_item_1, eventNames);
                     inputSearch = (EditText) findViewById(R.id.inputSearch);
-
+                    for(Event e: events){
+                        eventNames.add(e.getName()+" "+e.getMonth()+" "+e.getNumberDate()+ " "+ e.getYear());
+                    }
                     inputSearch.addTextChangedListener(new TextWatcher() {
 
                         @Override
                         public void onTextChanged(CharSequence s, int start, int before, int count) {
                             // Call back the Adapter with current character to Filter
                             adapter.getFilter().filter(s.toString());
+
                         }
 
                         @Override
@@ -79,13 +82,18 @@ public class ListActivity extends AppCompatActivity {
                     lv.setAdapter(adapter);
 
                     //adds event info to eventnames arraylist
-                    for(Event e: events){
-                        eventNames.add(e.getName()+" "+e.getMonth()+" "+e.getNumberDate()+ " "+ e.getYear());
-                    }
+
                     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedEvent=events.get(i);
+                            String a = adapterView.getAdapter().getItem(i).toString();
+                            for(String name:eventNames){
+                                int index=eventNames.indexOf(name);
+                                if (a.equals(name)){
+                                    selectedEvent=events.get(index);
+                                }
+                            }
+
                             Intent intent= new Intent(view.getContext(),CompetitionInformation.class);
                             startActivity(intent);
                         }
